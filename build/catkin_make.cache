@@ -1,0 +1,2 @@
+lidar_localization
+-DCATKIN_DEVEL_PREFIX=/home/ghj/auto_driving/devel -DCMAKE_INSTALL_PREFIX=/home/ghj/auto_driving/install -G Unix Makefiles
