@@ -1,0 +1,13 @@
+1、
+int main(int argc,char *argv[](**argv),char*envp[])
+argc用来表示在命令行下输入命令的时候，一共有多少参数
+*argv[]用来获取命令行中输入的参数
+*envp[]用来获取系统的环境变量
+
+2、
+PCL PointCloud类型介绍
+PointCloud是存储点集的容器
+https://blog.csdn.net/weixin_45867382/article/details/121670492
+
+3、
+launch文件中的launch-prefix  是否新开一个窗口执行。 例如，需要通过窗口进行机器人移动控制的时候，应该为控制 node 新开一个窗口；或者当 node 有些信息输出，不希望与其他 node 信息混杂在一起的时候。 output ：默认情况下，launch 启动 node 的信息会存入下面的 log 文件中

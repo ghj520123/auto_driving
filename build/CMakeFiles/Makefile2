@@ -55,12 +55,14 @@ CMAKE_BINARY_DIR = /home/ghj/auto_driving/build
 # The main recursive "all" target.
 all: gtest/all
 all: lidar_localization/all
+all: extract_points/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
 preinstall: lidar_localization/preinstall
+preinstall: extract_points/preinstall
 
 .PHONY : preinstall
 
@@ -72,8 +74,27 @@ clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
 clean: lidar_localization/clean
+clean: extract_points/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory extract_points
+
+# Recursive "all" directory target.
+extract_points/all: extract_points/CMakeFiles/extract_points.dir/all
+
+.PHONY : extract_points/all
+
+# Recursive "preinstall" directory target.
+extract_points/preinstall:
+
+.PHONY : extract_points/preinstall
+
+# Recursive "clean" directory target.
+extract_points/clean: extract_points/CMakeFiles/extract_points.dir/clean
+
+.PHONY : extract_points/clean
 
 #=============================================================================
 # Directory level rules for directory gtest
@@ -348,7 +369,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmoc
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=3,4 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=5,6 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -375,7 +396,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/clean:
 gtest/googlemock/CMakeFiles/gmock.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=1,2 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=3,4 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -402,7 +423,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/clean:
 gtest/googletest/CMakeFiles/gtest_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=7,8 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=9,10 "Built target gtest_main"
 .PHONY : gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -429,7 +450,7 @@ gtest/googletest/CMakeFiles/gtest_main.dir/clean:
 gtest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=5,6 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=7,8 "Built target gtest"
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1617,7 +1638,7 @@ lidar_localization/CMakeFiles/topic_tools_generate_messages_lisp.dir/clean:
 lidar_localization/CMakeFiles/test_frame_node.dir/all:
 	$(MAKE) -f lidar_localization/CMakeFiles/test_frame_node.dir/build.make lidar_localization/CMakeFiles/test_frame_node.dir/depend
 	$(MAKE) -f lidar_localization/CMakeFiles/test_frame_node.dir/build.make lidar_localization/CMakeFiles/test_frame_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=9,10 "Built target test_frame_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=11,12 "Built target test_frame_node"
 .PHONY : lidar_localization/CMakeFiles/test_frame_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1960,6 +1981,33 @@ tf2_msgs_generate_messages_nodejs: lidar_localization/CMakeFiles/tf2_msgs_genera
 lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/clean:
 	$(MAKE) -f lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/clean
 .PHONY : lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/clean
+
+#=============================================================================
+# Target rules for target extract_points/CMakeFiles/extract_points.dir
+
+# All Build rule for target.
+extract_points/CMakeFiles/extract_points.dir/all:
+	$(MAKE) -f extract_points/CMakeFiles/extract_points.dir/build.make extract_points/CMakeFiles/extract_points.dir/depend
+	$(MAKE) -f extract_points/CMakeFiles/extract_points.dir/build.make extract_points/CMakeFiles/extract_points.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ghj/auto_driving/build/CMakeFiles --progress-num=1,2 "Built target extract_points"
+.PHONY : extract_points/CMakeFiles/extract_points.dir/all
+
+# Build rule for subdir invocation for target.
+extract_points/CMakeFiles/extract_points.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ghj/auto_driving/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 extract_points/CMakeFiles/extract_points.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ghj/auto_driving/build/CMakeFiles 0
+.PHONY : extract_points/CMakeFiles/extract_points.dir/rule
+
+# Convenience name for target.
+extract_points: extract_points/CMakeFiles/extract_points.dir/rule
+
+.PHONY : extract_points
+
+# clean rule for target.
+extract_points/CMakeFiles/extract_points.dir/clean:
+	$(MAKE) -f extract_points/CMakeFiles/extract_points.dir/build.make extract_points/CMakeFiles/extract_points.dir/clean
+.PHONY : extract_points/CMakeFiles/extract_points.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

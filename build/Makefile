@@ -1012,6 +1012,19 @@ tf2_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
 .PHONY : tf2_msgs_generate_messages_nodejs/fast
 
+#=============================================================================
+# Target rules for targets named extract_points
+
+# Build rule for target.
+extract_points: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 extract_points
+.PHONY : extract_points
+
+# fast build rule for target.
+extract_points/fast:
+	$(MAKE) -f extract_points/CMakeFiles/extract_points.dir/build.make extract_points/CMakeFiles/extract_points.dir/build
+.PHONY : extract_points/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1090,6 +1103,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... extract_points"
 .PHONY : help
 
 

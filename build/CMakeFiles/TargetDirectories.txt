@@ -98,3 +98,11 @@
 /home/ghj/auto_driving/build/lidar_localization/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir
 /home/ghj/auto_driving/build/lidar_localization/CMakeFiles/tf2_msgs_generate_messages_lisp.dir
 /home/ghj/auto_driving/build/lidar_localization/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/install/strip.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/install/local.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/install.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/list_install_components.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/rebuild_cache.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/edit_cache.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/test.dir
+/home/ghj/auto_driving/build/extract_points/CMakeFiles/extract_points.dir

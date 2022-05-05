@@ -1,0 +1,8 @@
+prefix=/home/ghj/auto_driving/devel
+
+Name: extract_points
+Description: Description of extract_points
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

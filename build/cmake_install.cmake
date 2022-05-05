@@ -132,6 +132,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ghj/auto_driving/build/gtest/cmake_install.cmake")
   include("/home/ghj/auto_driving/build/lidar_localization/cmake_install.cmake")
+  include("/home/ghj/auto_driving/build/extract_points/cmake_install.cmake")
 
 endif()
 
