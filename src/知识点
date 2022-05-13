@@ -11,3 +11,27 @@ https://blog.csdn.net/weixin_45867382/article/details/121670492
 
 3、
 launch文件中的launch-prefix  是否新开一个窗口执行。 例如，需要通过窗口进行机器人移动控制的时候，应该为控制 node 新开一个窗口；或者当 node 有些信息输出，不希望与其他 node 信息混杂在一起的时候。 output ：默认情况下，launch 启动 node 的信息会存入下面的 log 文件中
+
+4、
+git add .
+git commit -m ""
+git pull origin master
+git push origin master
+
+5、
+ceres是一个广泛使用的最小二乘问题求解库，其适合很广泛的最小二乘优化问题。
+使用ceres求解非线性优化问题，一共分为三个部分
+（1）构建cost_function，即代价函数，也就是寻优的目标式，这个部分需要使用仿函数（functor）这一技巧来实现，做法是定义一个cost function的结构体，在结构体内重载（）运算符。
+（2）通过代价函数构建待求解的优化问题。 
+（3）配置求解器参数并求解问题，这个步骤就是设置方程怎么求解、求解过程是否输出等，然后调用一下Solve方法。
+
+6、
+重载运算符
+<返回类型说明符> operator <要重载的运算符符号>(<参数表>) {      <函数体> }
+
+7、
+C语言const int *pi与int *const pi的区别
+http://c.biancheng.net/cpp/html/493.html
+
+8、
+launch文件中pkg="文件夹名" name="文件夹名" name="cpp文件名"

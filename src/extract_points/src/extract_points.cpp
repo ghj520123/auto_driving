@@ -136,6 +136,7 @@ void callback(const sensor_msgs::PointCloud2 ros_cloud) {
         }
     }
 
+    //地面，棱，平面，全部点云输出
     sensor_msgs::PointCloud2 lidarCloudGroundMsg;
     pcl::toROSMsg(*lidarCloudGroundPtr, lidarCloudGroundMsg);
     //时间戳对准
@@ -147,21 +148,22 @@ void callback(const sensor_msgs::PointCloud2 ros_cloud) {
 
     sensor_msgs::PointCloud2 lidarCloudEdgeMsg;
     pcl::toROSMsg(*lidarCloudEdgePtr, lidarCloudEdgeMsg);
-    //时间戳对准
     lidarCloudEdgeMsg.header.stamp = ros_cloud.header.stamp;
-    //数据所在的坐标系的名称
     lidarCloudEdgeMsg.header.frame_id = "map";
-    //发布消息
     pubLidarCloudEdge.publish(lidarCloudEdgeMsg);
 
     sensor_msgs::PointCloud2 lidarCloudPlaneMsg;
     pcl::toROSMsg(*lidarCloudPlanePtr, lidarCloudPlaneMsg);
-    //时间戳对准
     lidarCloudPlaneMsg.header.stamp = ros_cloud.header.stamp;
-    //数据所在的坐标系的名称
     lidarCloudPlaneMsg.header.frame_id = "map";
-    //发布消息
     pubLidarCloudPlane.publish(lidarCloudPlaneMsg);
+
+    sensor_msgs::PointCloud2 lidarCloudAllMsg;
+    pcl::toROSMsg(*lidarCloudAllPtr, lidarCloudAllMsg);
+    lidarCloudAllMsg.header.stamp = ros_cloud.header.stamp;
+    lidarCloudAllMsg.header.frame_id = "map_child";
+    pubLaserCloudall_01.publish(lidarCloudAllMsg);
+
 
     //计时结束
     clock_end = clock();
@@ -177,6 +179,7 @@ int main(int argc, char* argv[]) {
     pubLidarCloudGround = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_ground", 100);
     pubLidarCloudEdge = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_edge", 100);
     pubLidarCloudPlane = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_plane", 100);
+    pubLaserCloudall_01 = nh.advertise<sensor_msgs::PointCloud2>("kitti_cloud_all_01", 100);
     ros::spin();
 
     return 0;
