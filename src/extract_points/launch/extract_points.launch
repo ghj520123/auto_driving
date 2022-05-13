@@ -2,7 +2,7 @@
     <node pkg="extract_points" type="extract_points" name="extract_points" output="screen" />
     <!--<arg name="rviz" default="true" />-->
     <group>
-        <node launch-perfix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find extract_points)/rviz/extract_points_rviz.rviz" />
+        <node  pkg="rviz" type="rviz" name="rviz" args="-d $(find extract_points)/rviz/extract_points_rviz.rviz" />
     </group>
 
 </launch>

@@ -15,6 +15,7 @@
 ros::Publisher pubLidarCloudGround;
 ros::Publisher pubLidarCloudEdge;
 ros::Publisher pubLidarCloudPlane;
+ros::Publisher pubLaserCloudall_01;
 
 void callback(const sensor_msgs::PointCloud2 ros_cloud) {
     //时钟
@@ -55,6 +56,7 @@ void callback(const sensor_msgs::PointCloud2 ros_cloud) {
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr lidarCloudGroundPtr(new pcl::PointCloud<pcl::PointXYZRGB>());
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr lidarCloudEdgePtr(new pcl::PointCloud<pcl::PointXYZRGB>());
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr lidarCloudPlanePtr(new pcl::PointCloud<pcl::PointXYZRGB>());
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr lidarCloudAllPtr(new pcl::PointCloud<pcl::PointXYZRGB>());
 
     //判定各点的线数
     for (int i = 0;i < cloud_size;i++) {
@@ -73,6 +75,7 @@ void callback(const sensor_msgs::PointCloud2 ros_cloud) {
             continue;
         }
         //将每一个point的线数scanID压入到lidarCloudScans的尾端
+        point.b = scanID;
         lidarCloudScans[scanID].push_back(point);
     }
 
@@ -120,6 +123,36 @@ void callback(const sensor_msgs::PointCloud2 ros_cloud) {
         }
     }
 
+    for (int i = 0;i < 16;i++) {
+        *lidarCloudAllPtr += lidarCloudScans[i];
+    }
+
+    long all_points_num = lidarCloudAllPtr->points.size();
+    for (int i = 0;i < 30;i++)
+    {
+        long start_num = i * all_points_num / 30;
+        long end_num = (i + 1) * all_points_num / 30;
+        for (long j = start_num;j < end_num;j++)
+        {
+            if (lidarCloudAllPtr->points[j].r == 1)
+            {
+                if (lidarCloudAllPtr->points[j].g > 0.2 && (int(lidarCloudEdgePtr->points.size()) < 4 * (i + 1)))
+                {
+                    lidarCloudEdgePtr->push_back(lidarCloudAllPtr->points[j]);
+                    j = j + 5;
+                }
+                if (lidarCloudAllPtr->points[j].g < 0.05 && (int(lidarCloudPlanePtr->points.size()) < 20 * (i + 1)))
+                {
+                    lidarCloudPlanePtr->push_back(lidarCloudAllPtr->points[j]);
+                    j = j + 5;
+                }
+            }
+            if ((int(lidarCloudPlanePtr->points.size()) == 20 * (i + 1)) && (int(lidarCloudEdgePtr->points.size()) == 4 * (i + 1)))
+            {
+                j = end_num;
+            }
+        }
+    }
     //根据曲率获取edge点和plane点
     for (int i = 0;i < 16;i++) {
         for (int j = 5;j<int(lidarCloudScans[i].size()) - 5;j++) {
@@ -142,20 +175,20 @@ void callback(const sensor_msgs::PointCloud2 ros_cloud) {
     //时间戳对准
     lidarCloudGroundMsg.header.stamp = ros_cloud.header.stamp;
     //数据所在的坐标系的名称
-    lidarCloudGroundMsg.header.frame_id = "map";
+    lidarCloudGroundMsg.header.frame_id = "map_child";
     //发布消息
     pubLidarCloudGround.publish(lidarCloudGroundMsg);
 
     sensor_msgs::PointCloud2 lidarCloudEdgeMsg;
     pcl::toROSMsg(*lidarCloudEdgePtr, lidarCloudEdgeMsg);
     lidarCloudEdgeMsg.header.stamp = ros_cloud.header.stamp;
-    lidarCloudEdgeMsg.header.frame_id = "map";
+    lidarCloudEdgeMsg.header.frame_id = "map_child";
     pubLidarCloudEdge.publish(lidarCloudEdgeMsg);
 
     sensor_msgs::PointCloud2 lidarCloudPlaneMsg;
     pcl::toROSMsg(*lidarCloudPlanePtr, lidarCloudPlaneMsg);
     lidarCloudPlaneMsg.header.stamp = ros_cloud.header.stamp;
-    lidarCloudPlaneMsg.header.frame_id = "map";
+    lidarCloudPlaneMsg.header.frame_id = "map_child";
     pubLidarCloudPlane.publish(lidarCloudPlaneMsg);
 
     sensor_msgs::PointCloud2 lidarCloudAllMsg;
