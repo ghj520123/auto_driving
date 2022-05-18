@@ -343,13 +343,13 @@ int main(int argc, char* argv[]) {
     ros::init(argc, argv, "odometry");
     ros::NodeHandle nh;
     //订阅信息
-    ros::Subscriber cloud_plane = nh.subscribe("/kitti_cloud_plane", 100, cloud_plane_callback);
-    ros::Subscriber claou_all = nh.subscribe("/kitti_cloud_all_01", 100, cloud_all_callback);
+    ros::Subscriber cloud_plane = nh.subscribe("/cloud_plane", 100, cloud_plane_callback);
+    ros::Subscriber claou_all = nh.subscribe("/cloud_all_01", 100, cloud_all_callback);
     ////pubLaserOdometry包括当前帧四元数Q和位置t,pubLaserPath包含当前帧的位置t
     pubLidarOdometry = nh.advertise<nav_msgs::Odometry>("/lidar_odometry_to_init", 100);
     pubLidarPath = nh.advertise<nav_msgs::Path>("/lidar_odometry_path", 100);
-    pubLidarCloudall_02 = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_all_02", 100);
-    pubLidarCloud_map = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_map", 100);
+    pubLidarCloudall_02 = nh.advertise<sensor_msgs::PointCloud2>("/cloud_all_02", 100);
+    pubLidarCloud_map = nh.advertise<sensor_msgs::PointCloud2>("/cloud_map", 100);
     ros::spin();
     return 0;
 }
