@@ -209,10 +209,10 @@ int main(int argc, char* argv[]) {
     //订阅信息
     ros::Subscriber cloud_sub = nh.subscribe("/kitti/velo/pointcloud", 100, callback);
     //发布信息
-    pubLidarCloudGround = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_ground", 100);
-    pubLidarCloudEdge = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_edge", 100);
-    pubLidarCloudPlane = nh.advertise<sensor_msgs::PointCloud2>("/kitti_cloud_plane", 100);
-    pubLaserCloudall_01 = nh.advertise<sensor_msgs::PointCloud2>("kitti_cloud_all_01", 100);
+    pubLidarCloudGround = nh.advertise<sensor_msgs::PointCloud2>("/cloud_ground", 100);
+    pubLidarCloudEdge = nh.advertise<sensor_msgs::PointCloud2>("/cloud_edge", 100);
+    pubLidarCloudPlane = nh.advertise<sensor_msgs::PointCloud2>("/cloud_plane", 100);
+    pubLaserCloudall_01 = nh.advertise<sensor_msgs::PointCloud2>("/cloud_all_01", 100);
     ros::spin();
 
     return 0;
