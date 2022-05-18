@@ -83,8 +83,8 @@ int main(int argc, char *argv[])
     ros::NodeHandle nh;
 
     ros::Subscriber cloud_sub = nh.subscribe("/kitti/velo/pointcloud", 100, callback);
-    pubLidarCloudUp = nh.advertise<sensor_msgs::PointCloud2>("kitti_cloud_up", 100);
-    pubLidarCloudDown = nh.advertise<sensor_msgs::PointCloud2>("kitti_cloud_down", 100);
+    pubLidarCloudUp = nh.advertise<sensor_msgs::PointCloud2>("cloud_up", 100);
+    pubLidarCloudDown = nh.advertise<sensor_msgs::PointCloud2>("cloud_down", 100);
     ros::spin();
     return 0;
 }
